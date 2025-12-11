@@ -16,7 +16,6 @@ Get the latest release (DashLaunch plugin format) from the [Releases page](https
 Patches `UsbdIsDeviceAuthenticated` to always return `true`, allowing any USB device to be recognized as authenticated. This enables:
 - Custom controllers (DIY builds with Arduino, Raspberry Pi Pico, etc.)
 - Third-party controllers without authentication chips
-- XInput adapters for modern controllers (DualShock 4, DualSense, Switch Pro, etc.)
 
 ### 🔌 Interface Check Skip
 Patches `WgcAddDevice` to skip a specific interface descriptor check that fails on certain custom controller firmwares. Currently supported on kernel version **17559**.
