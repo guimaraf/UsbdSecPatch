@@ -4,6 +4,8 @@
 
 A kernel patch for Xbox 360 (RGH/JTAG) consoles that enables the use of custom USB controllers and peripherals that don't have official Microsoft authentication chips.
 
+> ⚠️ **NOTICE**: Version 2.0 with multiple identical controllers support has **NOT been compiled or tested yet**. Use v1.0 from official releases for stable functionality.
+
 ## 📥 Download
 
 Get the latest release (DashLaunch plugin format) from the [Releases page](https://github.com/InvoxiPlayGames/UsbdSecPatch/releases).
@@ -16,12 +18,15 @@ Get the latest release (DashLaunch plugin format) from the [Releases page](https
 Patches `UsbdIsDeviceAuthenticated` to always return `true`, allowing any USB device to be recognized as authenticated. This enables:
 - Custom controllers (DIY builds with Arduino, Raspberry Pi Pico, etc.)
 - Third-party controllers without authentication chips
+- XInput adapters for modern controllers (DualShock 4, DualSense, Switch Pro, etc.)
 
 ### 🔌 Interface Check Skip
 Patches `WgcAddDevice` to skip a specific interface descriptor check that fails on certain custom controller firmwares. Currently supported on kernel version **17559**.
 
-### 🆕 Multiple Identical Controllers Support (v2.0)
+### 🆕 Multiple Identical Controllers Support (v2.0) - EXPERIMENTAL
 **New in v2.0**: Added device tracking using USB topology (physical port location) to support multiple identical controllers connected simultaneously.
+
+> ⚠️ **EXPERIMENTAL**: This feature has not been compiled or tested yet. It is a work in progress.
 
 > **Problem solved**: When two identical controllers (same VID/PID) were connected, only the last one would work because the kernel indexed devices by VID+PID. Now devices are tracked by their physical port position.
 
@@ -161,6 +166,7 @@ Contributions are welcome! Areas that need work:
 ## Credits
 
 - **InvoxiPlayGames** - Original author
+- **Fred Oliveira** - v2.0 enhancements (multiple identical controllers support)
 - **Community** - Testing and feedback
 - **Xenia Project** - Kernel export ordinal documentation
 
